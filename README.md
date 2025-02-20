@@ -1,24 +1,24 @@
-## 📌 Project Overview
+## Project Overview
 The **Todo App** is a task management application built using **React Native**. It enables users to add, track, and manage their tasks efficiently with filtering options for different task statuses.
 
-## 📸 Screenshots
+## Screenshots
 
-### 1️⃣ Typing a New Task
+### Typing a New Task
 ![Typing a New Task](screenshots/0-type-new-task.png)
 
-### 2️⃣ Task Added Successfully
+### Task Added Successfully
 ![Task Added](screenshots/1-new-task-after-added.png)
 
-### 3️⃣ Changing Task Status to Done
+### Changing Task Status to Done
 ![Changing Status](screenshots/2-change-status-to-done.png)
 
-### 4️⃣ Viewing In-Progress Tasks
+### Viewing In-Progress Tasks
 ![In-Progress Tab](screenshots/3-in-progress-tab.png)
 
-### 5️⃣ Viewing Done Tasks
+### Viewing Done Tasks
 ![Done Tab](screenshots/4-done-tab.png)
 
-## 🚀 Features
+## Features
 - Add new tasks with a title and description
 - Mark tasks as "done" or "in-progress"
 - Filter tasks based on their status
@@ -52,15 +52,15 @@ The **Todo App** is a task management application built using **React Native**. 
 
 ---
 
-## 📥 Installation & Setup
+## Installation & Setup
 
-### 1️⃣ Prerequisites
+### Prerequisites
 Ensure you have the following installed:
 - **Node.js** (LTS version recommended)
 - **npm** or **yarn**
 - **Git**
 
-### 2️⃣ Clone the Repository
+### Clone the Repository
 ```sh
 git clone https://github.com/YOUR_GITHUB_USERNAME/todo-app.git
 cd todo-app
@@ -73,7 +73,7 @@ npm install
 yarn install
 ```
 
-### 4️⃣ Run the Application
+### Run the Application
 For **React Native Web (Expo/Web):**
 ```sh
 npm start
@@ -89,26 +89,26 @@ npx react-native run-ios       # For iOS
 
 ---
 
-## 🔄 Version Control & GitHub Integration
+## Version Control & GitHub Integration
 
-### 1️⃣ Initialize Git
+### Initialize Git
 ```sh
 git init
 ```
 
-### 2️⃣ Add a Remote Repository
+### Add a Remote Repository
 Create a new repository on GitHub, then link it:
 ```sh
 git remote add origin https://github.com/YOUR_GITHUB_USERNAME/todo-app.git
 ```
 
-### 3️⃣ Add and Commit Code
+### Add and Commit Code
 ```sh
 git add .
 git commit -m "Initial commit"
 ```
 
-### 4️⃣ Push to GitHub
+### Push to GitHub
 ```sh
 git branch -M main
 git push -u origin main
@@ -116,7 +116,7 @@ git push -u origin main
 
 ---
 
-## 🌱 Contributing Guidelines
+## Contributing Guidelines
 1. **Fork the repository**
 2. **Create a new branch** (`git checkout -b feature-name`)
 3. **Make your changes**
@@ -126,12 +126,12 @@ git push -u origin main
 
 ---
 
-## 📜 License
+## License
 This project is licensed under the **MIT License**.
 
 ---
 
-## 💬 Contact & Support
+## Contact & Support
 For any issues or feature requests, please open an **issue** on GitHub or contact me at **your-email@example.com**.
 
 ---
