@@ -1,12 +1,24 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { TextInput } from "react-native-web";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Keyboard,
+  KeyboardAvoidingView,
+  Alert,
+} from "react-native";
+import { useTodos } from "../context/TodosProvider";
 
-const AddNewTask = ({ handleAddNewTask }) => {
+const AddNewTask = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  function handleSubmit() {
-    handleAddNewTask({
+  const { addTodo } = useTodos();
+  async function handleSubmit() {
+    addTodo({
+      id: Math.random(),
       title,
       description: desc,
       createdAt: new Date(),
@@ -14,16 +26,20 @@ const AddNewTask = ({ handleAddNewTask }) => {
     });
     setTitle("");
     setDesc("");
+    Keyboard.dismiss();
+    Alert.alert("Todo Added", "Your todo item has been added successfully!");
   }
   return (
-    <View style={{ width: "100%" }}>
-      <Text style={styles.header}>New Task</Text>
+    <KeyboardAvoidingView
+      style={{ width: "100%", paddingHorizontal: 16, paddingTop: 16 }}
+    >
+      <Text style={styles.header}>Add new todo</Text>
       <TextInput
         placeholder="Task Title"
         style={styles.title}
         placeholderTextColor={"rgb(0 0 0 / 50%)"}
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChangeText={(value) => setTitle(value)}
       />
       <TextInput
         style={styles.description}
@@ -32,46 +48,60 @@ const AddNewTask = ({ handleAddNewTask }) => {
         numberOfLines={4}
         placeholderTextColor={"rgb(0 0 0 / 50%)"}
         value={desc}
-        onChange={(e) => setDesc(e.target.value)}
+        onChangeText={(value) => setDesc(value)}
       />
       <Pressable onPress={handleSubmit}>
         <Text style={styles.button}>ADD</Text>
       </Pressable>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 const styles = StyleSheet.create({
   header: {
     fontWeight: "bold",
-    fontSize: "1.2 px",
+    fontSize: 24,
   },
   title: {
-    border: "1px rgb(0 0 0 / 70%) solid ",
-    borderRadius: "8px",
+    fontSize: 16,
+    borderWidth: 1,
+    borderColor: "black",
+    backgroundColor: "white",
+    borderStyle: "solid",
+    borderRadius: 8,
     width: "100%",
-    marginVertical: "15px",
-    paddingVertical: "5px",
-    paddingHorizontal: "8px",
-    boxShadow: "0px 5px 0px black",
+    marginVertical: 15,
+    paddingVertical: 15,
+    paddingHorizontal: 8,
+    shadowColor: "balck",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 1,
+    shadowRadius: 0,
   },
   description: {
-    border: "1px rgb(0 0 0 / 70%) solid ",
-    borderRadius: "8px",
+    fontSize: 16,
+    backgroundColor: "white",
+    borderWidth: 1,
+    borderColor: "balck",
+    borderStyle: "solid",
+    borderRadius: 8,
     width: "100%",
-    paddingVertical: "5px",
-    paddingHorizontal: "8px",
-    boxShadow: "0px 5px 0px black",
+    paddingVertical: 15,
+    paddingHorizontal: 8,
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 1,
+    shadowRadius: 0,
   },
   button: {
     backgroundColor: "black",
     color: "white",
-    width: "fit-content",
-    borderRadius: "20px",
-    paddingHorizontal: "20px",
-    paddingVertical: "10px",
-    marginTop: "15px",
+    paddingHorizontal: 40,
+    paddingVertical: 10,
+    marginTop: 15,
     alignSelf: "flex-end",
+    borderRadius: 20,
     fontWeight: "500",
   },
 });
+
 export default AddNewTask;

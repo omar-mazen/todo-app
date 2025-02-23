@@ -34,22 +34,20 @@ const Tabs = function ({ activeTab, setActiveTab }) {
 };
 const styles = StyleSheet.create({
   tabs: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
+    backgroundColor: "white",
   },
   tab: {
-    flexShrink: 1,
     flexGrow: 1,
     textAlign: "center",
-    padding: "5px",
-    cursor: "pointer",
+    paddingVertical: 12,
   },
   active: {
-    backgroundColor: "black",
-    color: "white",
     fontWeight: "500",
+    borderBlockColor: "#03a9f4",
+    borderBottomWidth: 2,
   },
 });
 

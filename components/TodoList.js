@@ -1,15 +1,15 @@
 import { StyleSheet } from "react-native";
-import { CheckBox, FlatList, Text, View } from "react-native-web";
+import { FlatList } from "react-native";
 import Todo from "./Todo";
 
-const TodoList = ({ list, handleTaskStatus }) => {
+const TodoList = ({ route, list }) => {
+  // const list = route.params?.list;
   return (
     <FlatList
+      style={{ flex: 1, paddingHorizontal: 16 }}
       data={list}
       keyExtractor={(_, i) => i.toString()}
-      renderItem={({ item }) => (
-        <Todo todo={item} handleTaskStatus={handleTaskStatus} />
-      )}
+      renderItem={({ item }) => <Todo todo={item} />}
     />
   );
 };

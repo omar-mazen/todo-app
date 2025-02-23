@@ -1,61 +1,66 @@
-import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import AddNewTask from "./components/addNewTask";
-import Tabs from "./components/Tabs";
-import TodoList from "./components/TodoList";
-import { todosObj } from "./data";
+import { StyleSheet } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import TodosScreen from "./screens/TodosScreen";
+import { TodosProvider } from "./context/TodosProvider";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomeScreen from "./screens/HomeScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import TodoScreen from "./screens/TodoScreen";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
-export default function App() {
-  const [activeTab, setActiveTab] = useState("all");
-
-  const [todos, setTodos] = useState(todosObj);
-  const inProgress = todos.filter((todo) => todo.status == "in-progress");
-  const done = todos.filter((todo) => todo.status == "done");
-
-  function hadnleAddNewTask(newTask) {
-    setTodos((prev) => [newTask, ...prev]);
-  }
-  function handleTaskStatus(taskId) {
-    setTodos((prev) =>
-      prev.map((todo) =>
-        todo.id == taskId
-          ? { ...todo, status: todo.status == "done" ? "in-progress" : "done" }
-          : todo
-      )
-    );
-  }
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+const BottomTabNavigator = () => {
   return (
-    <View style={styles.container}>
-      <AddNewTask handleAddNewTask={hadnleAddNewTask} />
-      <View style={styles.divider} />
-      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      {todos ? (
-        <TodoList
-          list={
-            activeTab == "all"
-              ? todos
-              : activeTab == "in-progress"
-              ? inProgress
-              : done
-          }
-          handleTaskStatus={handleTaskStatus}
-        />
-      ) : (
-        <Text>There is no todo yet</Text>
-      )}
-    </View>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, size, color }) => {
+          let iconName;
+          if (route.name == "Home") iconName = "home";
+
+          if (route.name == "Todos") iconName = "task";
+
+          return (
+            <MaterialIcons
+              name={iconName}
+              size={24}
+              color={focused ? "#03a9f4" : "black"}
+            />
+          );
+        },
+        headerTitleAlign: "center",
+      })}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Todos" component={TodosScreen} />
+    </Tab.Navigator>
+  );
+};
+const MainStck = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="BottomTabNavigator"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="todo"
+        component={TodoScreen}
+        options={({ route }) => ({
+          title: route.params.title,
+          // presentation: "modal",
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+export default function App() {
+  return (
+    <TodosProvider>
+      <NavigationContainer>
+        <MainStck />
+      </NavigationContainer>
+    </TodosProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    padding: "10px",
-  },
-  divider: {
-    height: "1px",
-    backgroundColor: "black",
-    width: "100%",
-    marginVertical: "20px",
-  },
-});

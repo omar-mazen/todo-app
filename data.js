@@ -1,4 +1,4 @@
-export const todosObj = [
+export const todosData = [
   {
     id: 1,
     title: "Fix homepage UI",
