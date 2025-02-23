@@ -76,18 +76,39 @@ Below is the basic folder structure for the project:
 
 ## Screenshots
 
-Below are some screenshots of the app in action:
+Here are the key screens demonstrating how the app works:
 
-- **Main Screen:**  
-  ![Main Screen](./screenshots/main-screen.png)
+1. **Home Page**  
+   ![Home Page](./screenshots/1-home-page.PNG)  
+   *This is the initial screen where you can add a new task by providing a title and description.*
 
-- **Add New Task:**  
-  ![Add Task Screen](./screenshots/add-task.png)
+2. **Type Input Description**  
+   ![Type Input Description](./screenshots/2-type-input-description.PNG)  
+   *Shows the user typing in a task description.*
 
-- **Todo Details:**  
-  ![Todo Details Screen](./screenshots/todo-details.png)
+3. **After Press Add**  
+   ![After Press Add](./screenshots/3-after-press-add.PNG)  
+   *An alert confirms that the new task has been successfully added.*
 
-*Note: Replace the image paths with the actual paths or URLs to your screenshots.*
+4. **Tasks Page After Add**  
+   ![Tasks Page After Add](./screenshots/4-tasks-page-after-add.PNG)  
+   *The newly added task appears in the task list on the Todos page.*
+
+5. **Tasks Page - Task Checked**  
+   ![Tasks Page Task Checked](./screenshots/5-tasks-page-task-checked.PNG)  
+   *A task is marked as ‘done’ by tapping the checkbox.*
+
+6. **Delete Task**  
+   ![Delete Task](./screenshots/6-delete-task.PNG)  
+   *A confirmation prompt appears before deleting a task.*
+
+7. **Task After Task Deleted**  
+   ![Task After Task Deleted](./screenshots/7-task-after-task-deleted.PNG)  
+   *The task is removed from the list after deletion.*
+
+8. **Task Detail Page**  
+   ![Task Detail Page](./screenshots/8-task-detail-page.PNG)  
+   *A detailed view of a task showing its title, description, and creation date/time, with the ability to mark it as done or delete it.*
 
 ---
 
