@@ -91,7 +91,7 @@ Here are the key screens demonstrating how the app works:
    *An alert confirms that the new task has been successfully added.*
 
 4. **Tasks Page After Add**  
-   ![Tasks Page After Add](./screenshots/4-tasks-page-after-add.PNG)  
+   ![Tasks Page After Add](./screenshots/4-tasks-page-after-add-فشسن.PNG)  
    *The newly added task appears in the task list on the Todos page.*
 
 5. **Tasks Page - Task Checked**  
