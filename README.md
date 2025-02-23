@@ -79,7 +79,7 @@ Below is the basic folder structure for the project:
 Here are the key screens demonstrating how the app works:
 
 1. **Home Page**  
-   ![Home Page](./screenshots/1-home-page.PNG)  
+   ![Home Page](./screenshots/1-home-page.png)  
    *This is the initial screen where you can add a new task by providing a title and description.*
 
 2. **Type Input Description**  
@@ -91,7 +91,7 @@ Here are the key screens demonstrating how the app works:
    *An alert confirms that the new task has been successfully added.*
 
 4. **Tasks Page After Add**  
-   ![Tasks Page After Add](./screenshots/4-tasks-page-after-add-فشسن.PNG)  
+   ![Tasks Page After Add](./screenshots/4-tasks-page-after-add-task.PNG)  
    *The newly added task appears in the task list on the Todos page.*
 
 5. **Tasks Page - Task Checked**  
@@ -103,7 +103,7 @@ Here are the key screens demonstrating how the app works:
    *A confirmation prompt appears before deleting a task.*
 
 7. **Task After Task Deleted**  
-   ![Task After Task Deleted](./screenshots/7-task-after-task-deleted.PNG)  
+   ![Task After Task Deleted](./screenshots/7-tasks-after-task-deleted.PNG)  
    *The task is removed from the list after deletion.*
 
 8. **Task Detail Page**  
