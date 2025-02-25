@@ -2,15 +2,13 @@ import { View, Text, Dimensions } from "react-native";
 import React, { useEffect, useState } from "react";
 import Tabs from "../components/Tabs";
 import TodoList from "../components/TodoList";
-import { useTodos } from "../context/TodosProvider";
-import { useNavigation } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSelector } from "react-redux";
 
 const Tab = createMaterialTopTabNavigator();
 const TodosScreen = () => {
   const [activeTab, setActiveTab] = useState("all");
-  const { todos } = useTodos();
+  const todos = useSelector((store) => store.todos.todos);
   const inProgress = todos?.filter((todo) => todo?.status == "in-progress");
   const done = todos?.filter((todo) => todo?.status == "done");
   return (

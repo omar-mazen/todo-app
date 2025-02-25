@@ -10,20 +10,25 @@ import {
   KeyboardAvoidingView,
   Alert,
 } from "react-native";
-import { useTodos } from "../context/TodosProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodoThunk } from "../redux/slices/todoSlice";
 
 const AddNewTask = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const { addTodo } = useTodos();
+  const dispatch = useDispatch();
+  console.log(useSelector((s) => s.todos.todos));
+
   async function handleSubmit() {
-    addTodo({
-      id: Math.random(),
-      title,
-      description: desc,
-      createdAt: new Date(),
-      status: "in-progress",
-    });
+    dispatch(
+      addTodoThunk({
+        id: Math.random(),
+        title,
+        description: desc,
+        createdAt: new Date(),
+        status: "in-progress",
+      })
+    );
     setTitle("");
     setDesc("");
     Keyboard.dismiss();

@@ -1,24 +1,29 @@
 import { View, Text, Pressable, StyleSheet, Alert } from "react-native";
 import React from "react";
-import { useTodos } from "../context/TodosProvider";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useNavigation } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodoThunk, updateTodoThunk } from "../redux/slices/todoSlice";
 
 const TodoScreen = ({ route }) => {
   const { params } = route;
-  const { updateTodo, deleteTodo, todos } = useTodos();
+  const dispatch = useDispatch();
+  const todos = useSelector((store) => store.todos.todos);
+  console.log(todos);
   const todo = todos.find((todo) => todo.id == params.id);
   const checked = todo.status === "done";
-
+  const { goBack } = useNavigation();
   function handleCheck() {
-    updateTodo({
-      todoId: todo.id,
-      updatedTodo: {
-        ...todo,
-        status: checked ? "in-progress" : "done",
-      },
-    });
+    dispatch(
+      updateTodoThunk({
+        todoId: todo.id,
+        updatedTodo: {
+          ...todo,
+          status: checked ? "in-progress" : "done",
+        },
+      })
+    );
   }
-
   function handleDelete() {
     Alert.alert(
       "Delete Todo",
@@ -27,7 +32,10 @@ const TodoScreen = ({ route }) => {
         { text: "Cancel", style: "cancel" },
         {
           text: "Delete",
-          onPress: () => deleteTodo(todo.id),
+          onPress: () => {
+            goBack();
+            dispatch(deleteTodoThunk(todo.id));
+          },
           style: "destructive",
         },
       ],

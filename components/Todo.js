@@ -7,21 +7,24 @@ import {
   Text,
   View,
 } from "react-native";
-import { useTodos } from "../context/TodosProvider";
 import { useNavigation } from "@react-navigation/native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useDispatch } from "react-redux";
+import { deleteTodoThunk, updateTodoThunk } from "../redux/slices/todoSlice";
 const Todo = ({ todo }) => {
   const checked = todo?.status === "done";
-  const { updateTodo, deleteTodo } = useTodos();
   const { navigate } = useNavigation();
+  const dispatch = useDispatch();
   function handleCheck() {
-    updateTodo({
-      todoId: todo.id,
-      updatedTodo: {
-        ...todo,
-        status: checked ? "in-progress" : "done",
-      },
-    });
+    dispatch(
+      updateTodoThunk({
+        todoId: todo.id,
+        updatedTodo: {
+          ...todo,
+          status: checked ? "in-progress" : "done",
+        },
+      })
+    );
   }
   function handleDelete() {
     Alert.alert(
@@ -34,7 +37,7 @@ const Todo = ({ todo }) => {
         },
         {
           text: "Delete",
-          onPress: () => deleteTodo(todo.id),
+          onPress: () => dispatch(deleteTodoThunk(todo.id)),
           style: "destructive",
         },
       ],

@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import { FlatList } from "react-native";
 import Todo from "./Todo";
 

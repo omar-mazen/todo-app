@@ -1,12 +1,13 @@
-import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TodosScreen from "./screens/TodosScreen";
-import { TodosProvider } from "./context/TodosProvider";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./screens/HomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import TodoScreen from "./screens/TodoScreen";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Provider, useSelector } from "react-redux";
+import store from "./redux/store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -57,10 +58,10 @@ const MainStck = () => {
 };
 export default function App() {
   return (
-    <TodosProvider>
+    <Provider store={store}>
       <NavigationContainer>
         <MainStck />
       </NavigationContainer>
-    </TodosProvider>
+    </Provider>
   );
 }
